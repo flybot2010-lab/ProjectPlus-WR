@@ -10,15 +10,14 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 3000;
 
-// Serve static files from the "public" directory
+console.log("Importing Completed, Setting Directories..")
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve the index.html file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Serve the music files
+console.log("Scanning For MP3s in the music directory..")
 app.get('/music', (req, res) => {
     const musicDir = path.join(__dirname, 'public', 'music');
     fs.readdir(musicDir, (err, files) => {
@@ -31,5 +30,6 @@ app.get('/music', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log('Server Started Successfully @ Port ${port}')
+    console.log(`Thanks To The Contributers!`);
 });
